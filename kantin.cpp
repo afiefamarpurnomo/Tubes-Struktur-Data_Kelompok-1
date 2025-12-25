@@ -326,17 +326,14 @@ void cariMenu(MLL L) {
 
 /* ===== INIT DATA ===== */
 void initData(MLL &L) {
-    // Kategori
     Kategori *KB = L.first;
     Kategori *KR = KB->next;
     Kategori *KM = KR->next;
 
-    // Buat menu
     Menu *m1 = createMenu("Nasi Goreng", 15000, 10);
     Menu *m2 = createMenu("Keripik", 5000, 20);
     Menu *m3 = createMenu("Es Teh", 3000, 15);
 
-    // Masukkan TAIL ke masing-masing kategori
     KB->firstMenu = m1;
 
     KR->firstMenu = m2;

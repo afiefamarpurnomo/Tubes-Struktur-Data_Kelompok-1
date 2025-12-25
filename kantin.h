@@ -30,7 +30,6 @@ struct MLL {
 /* ===== GLOBAL ID ===== */
 extern int autoMenuId;
 
-/* ===== PRIMITIVE ===== */
 void createList(MLL &L);
 
 /* ===== KATEGORI ===== */
