@@ -1,4 +1,7 @@
 #include "kantin.h"
+#include <iomanip>
+
+using namespace std;
 
 /* ===== AUTO ID ===== */
 int autoMenuId = 1;
@@ -164,9 +167,24 @@ void deleteMenuById(MLL &L, int id) {
 
 /* ===== VIEW ===== */
 void headerTabel() {
-    cout << "---------------------------------------------------------\n";
-    cout << "ID | NAMA MENU        | HARGA | STOK | KATEGORI\n";
-    cout << "---------------------------------------------------------\n";
+    cout << "-----------------------------------------------------------------------\n";
+    cout << left
+         << setw(4)  << "ID"
+         << setw(20) << "NAMA MENU"
+         << setw(10) << "HARGA"
+         << setw(8)  << "STOK"
+         << setw(20) << "KATEGORI" << endl;
+    cout << "-----------------------------------------------------------------------\n";
+}
+
+void printMenuRow(Menu* M, string kategori) {
+    cout << left
+         << setw(4)  << M->id
+         << setw(20) << M->nama
+         << setw(10) << M->harga
+         << setw(8)  << M->stok
+         << setw(20) << kategori
+         << endl;
 }
 
 void tampilSemuaMenu(MLL L) {
@@ -175,11 +193,13 @@ void tampilSemuaMenu(MLL L) {
     while (K != NULL) {
         Menu *M = K->firstMenu;
         while (M != NULL) {
-            cout << M->id << "  | "
-                 << M->nama << " | "
-                 << M->harga << " | "
-                 << M->stok << " | "
-                 << K->nama << endl;
+            cout << left
+                 << setw(4)  << M->id
+                 << setw(20) << M->nama
+                 << setw(10) << M->harga
+                 << setw(8)  << M->stok
+                 << setw(20) << K->nama
+                 << endl;
             M = M->next;
         }
         K = K->next;
@@ -193,11 +213,13 @@ void tampilMenuKategori(MLL L, string kategori) {
             headerTabel();
             Menu *M = K->firstMenu;
             while (M != NULL) {
-                cout << M->id << "  | "
-                     << M->nama << " | "
-                     << M->harga << " | "
-                     << M->stok << " | "
-                     << K->nama << endl;
+                cout << left
+                     << setw(4)  << M->id
+                     << setw(20) << M->nama
+                     << setw(10) << M->harga
+                     << setw(8)  << M->stok
+                     << setw(20) << K->nama
+                     << endl;
                 M = M->next;
             }
             return;
@@ -245,13 +267,8 @@ void menuTermurahTermahal(MLL L) {
 
     headerTabel();
     if (min != NULL) {
-        cout << min->id << " | " << min->nama << " | "
-             << min->harga << " | " << min->stok << " | "
-             << katMin << endl;
-
-        cout << max->id << " | " << max->nama << " | "
-             << max->harga << " | " << max->stok << " | "
-             << katMax << endl;
+        printMenuRow(min, katMin);
+        printMenuRow(max, katMax);
     }
 }
 
@@ -278,13 +295,8 @@ void stokTerbanyakTersedikit(MLL L) {
 
     headerTabel();
     if (min != NULL) {
-        cout << min->id << " | " << min->nama << " | "
-             << min->harga << " | " << min->stok << " | "
-             << katMin << endl;
-
-        cout << max->id << " | " << max->nama << " | "
-             << max->harga << " | " << max->stok << " | "
-             << katMax << endl;
+        printMenuRow(min, katMin);
+        printMenuRow(max, katMax);
     }
 }
 
